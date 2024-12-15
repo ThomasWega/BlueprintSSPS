@@ -1,4 +1,4 @@
-name: EteirnumCore
+name: BlueprintSSPS
 version: '${version}'
 main: com.eteirnum.core.EteirnumCore
 api-version: '1.19'
