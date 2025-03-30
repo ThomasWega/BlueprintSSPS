@@ -41,7 +41,7 @@
                 "DAMAGE": {
                   "target": "TARGET",
                   "damage": "10",
-                  "cause": "SPELL"
+                  "ignore-unapply": true
                 }
               },
               {

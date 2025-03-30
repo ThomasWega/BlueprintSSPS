@@ -7,6 +7,7 @@ import me.wega.blueprint_core.tiered.effect.TieredObjectEffectData;
 import me.wega.blueprint_core.tiered.effect.TieredObjectEffectData.TargetType;
 import me.wega.blueprint_core.tiered.effect.parameter.EffectPlaceholderableNumber;
 import me.wega.blueprint_toolkit.utils.SchedulerUtils;
+import org.bukkit.Bukkit;
 import org.bukkit.entity.Entity;
 import org.bukkit.entity.LivingEntity;
 import org.jetbrains.annotations.NotNull;
@@ -122,16 +123,16 @@ public class TieredObjectEffectHandler {
 
             // because of this the order of the effects is not guaranteed (if one effect has ticks [0, 20] and one doesn't, the one without will be applied first)
             // apply and unApply immediately
-//            if (intervalsArray.length == 1 && intervalsArray[0] == 0 && repeats == 0) {
-//                ScheduledEffectData scheduledEffectData = new ScheduledEffectData(CURRENT_TICK, data, effect, 0, true);
-//                scheduledEffectData.setPlaceholders();
-//                Bukkit.getLogger().severe("APPLY IMMEDIATELY " + effect.getImpl().name());
-//                if (!effect.isIgnoreApply())
-//                    effect.apply(data);
-//                if (!effect.isIgnoreUnApply())
-//                    effect.unApply(data);
-//                continue;
-//            }
+            if (intervalsArray.length == 1 && intervalsArray[0] == 0 && repeats == 0) {
+                ScheduledEffectData scheduledEffectData = new ScheduledEffectData(CURRENT_TICK, data, effect, 0, true);
+                scheduledEffectData.setPlaceholders();
+                // Bukkit.getLogger().severe("APPLY IMMEDIATELY " + effect.getImpl().name());
+                if (!effect.isIgnoreApply())
+                    effect.apply(data);
+                if (!effect.isIgnoreUnApply())
+                    effect.unApply(data);
+                continue;
+            }
 
             int currentTick = CURRENT_TICK;
 

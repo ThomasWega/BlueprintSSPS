@@ -10,6 +10,8 @@ import me.wega.blueprint_core.tiered.effect.impl.loc.TeleportEffect;
 import me.wega.blueprint_core.tiered.effect.impl.particle.ParticleCircleEffect;
 import me.wega.blueprint_core.tiered.effect.impl.particle.ParticleEffect;
 import me.wega.blueprint_core.tiered.effect.impl.particle.ParticleSphereEffect;
+import me.wega.blueprint_core.tiered.effect.impl.potion.PotionEffect;
+import me.wega.blueprint_core.tiered.effect.impl.potion.RemovePotionEffect;
 import org.jetbrains.annotations.NotNull;
 
 @Getter
@@ -31,7 +33,9 @@ public enum TieredObjectEffectImpl {
     SET_PLACEHOLDER(SetPlaceholderEffect.class),
     SOUND(SoundEffect.class),
     LOC_SET(LocSetEffect.class),
-    TELEPORT(TeleportEffect.class);
+    TELEPORT(TeleportEffect.class),
+    POTION(PotionEffect.class),
+    REMOVE_POTION(RemovePotionEffect.class);
 
     private final @NotNull Class<? extends TieredObjectEffect<?>> effectClass;
 }

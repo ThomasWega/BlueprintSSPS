@@ -20,7 +20,7 @@ public class DefaultFiles {
     private static final Map<String, Set<String>> DEFAULT_FILES = new HashMap<>();
 
     static {
-        DEFAULT_FILES.put("tiered" + File.separator + "spell", Set.of("fireball.json", "flourish.json", "rush.json"));
+        DEFAULT_FILES.put("tiered" + File.separator + "spell", Set.of("fireball.json", "rush.json", "void_rupture.json"));
     }
 
     public static void saveDefaultFiles() {

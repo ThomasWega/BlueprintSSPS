@@ -18,6 +18,7 @@ import org.bukkit.event.Event;
 import org.bukkit.event.EventPriority;
 import org.bukkit.event.HandlerList;
 import org.bukkit.event.Listener;
+import org.bukkit.event.entity.EntityDamageByEntityEvent;
 import org.bukkit.event.entity.ProjectileHitEvent;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
@@ -96,7 +97,15 @@ public class ListenerEffect extends TieredObjectEffect<Listener> {
     @Getter
     @RequiredArgsConstructor
     public enum EventType {
-        // FIXME DO DAMAGE EVENT
+        DEFENSE(EntityDamageByEntityEvent.class, eventData -> {
+            EntityDamageByEntityEvent event = (EntityDamageByEntityEvent) eventData.event;
+            if (notCorrectInvoker(eventData, event.getEntity())) return false;
+            LivingEntity target = (LivingEntity) event.getDamager();
+            TieredObjectEffectData d = eventData.data;
+            d.setLocation(target.getLocation());
+            d.setTarget(target);
+            return true;
+        }),
         PROJECTILE_HIT(ProjectileHitEvent.class, eventData -> {
             ProjectileHitEvent event = (ProjectileHitEvent) eventData.event;
             if (notCorrectInvoker(eventData, event.getEntity())) return false;

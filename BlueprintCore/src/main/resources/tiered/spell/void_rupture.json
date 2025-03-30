@@ -1,0 +1,85 @@
+{
+  "id": "void_rupture",
+  "game-class": "phantom",
+  "overwrite": true,
+  "impl": "SPELL",
+  "tiers": [
+    {
+      "item": {
+        "material": "PUFFERFISH",
+        "display": "<#d60000>Void Rupture",
+        "lore": [
+          "● Creates an area effect inflicting wither and poison",
+          "● Damages all players in the area of the spell",
+          "● Pulses 3 times"
+        ]
+      },
+      "effects": [
+        {
+          "PARTICLE_CIRCLE": {
+            "propagate": true,
+            "repeat": "2",
+            "ticks": [0, 20],
+            "rotation-x": 90,
+            "target": "LOCATION",
+            "viewers": "ALL",
+            "radius": 3,
+            "density": 0.6,
+            "particles": 20,
+            "particle-data": {
+              "particle": "LARGE_SMOKE"
+            }
+          }
+        },
+        {
+          "IN_RANGE": {
+            "propagate": true,
+            "ticks": 20,
+            "repeat": "2",
+            "radius": 5,
+            "target": "INVOKER",
+            "ignore-invoker": true,
+            "effects": [
+              {
+                "MSG": {
+                  "type": "CHAT",
+                  "target": "TARGET",
+                  "msg": "test"
+                }
+              },
+              {
+                "POTION": [
+                  {
+                    "propagate": true,
+                    "target": "TARGET",
+                    "potion": "poison",
+                    "extend": true,
+                    "duration-ticks": 60,
+                    "amplifier": 1,
+                    "ignore-unapply": true
+                  },
+                  {
+                    "propagate": true,
+                    "target": "TARGET",
+                    "potion": "wither",
+                    "extend": true,
+                    "duration-ticks": 60,
+                    "amplifier": 1,
+                    "ignore-unapply": true
+                  }
+                ]
+              },
+              {
+                "DAMAGE": {
+                  "target": "TARGET",
+                  "damage": "10",
+                  "ignore-unapply": true
+                }
+              }
+            ]
+          }
+        }
+      ]
+    }
+  ]
+}
