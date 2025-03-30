@@ -1,5 +1,6 @@
 package me.wega.blueprint_core;
 
+import me.wega.blueprint_core.config.DefaultFiles;
 import me.wega.blueprint_core.config.MaterialGroups;
 import me.wega.blueprint_core.player.spell.cmd.AdminSpellCommand;
 import me.wega.blueprint_core.tiered.TieredObjectLoader;
@@ -35,6 +36,7 @@ public final class BlueprintCore extends JavaPlugin {
     @Override
     public void onEnable() {
         CommandAPI.onEnable();
+        DefaultFiles.saveDefaultFiles();
         this.initializeInstances();
         this.loadData();
         this.registerCommands();

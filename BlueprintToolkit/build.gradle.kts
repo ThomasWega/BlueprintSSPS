@@ -41,7 +41,7 @@ dependencies {
     compileOnly("net.kyori:adventure-text-serializer-plain:4.16.0")
     compileOnly("net.kyori:adventure-text-serializer-legacy:4.16.0")
     compileOnly("de.tr7zw:item-nbt-api-plugin:2.13.2")
-    compileOnly("com.comphenix.protocol:ProtocolLib:5.3.0-SNAPSHOT")
+    compileOnly("com.comphenix.protocol:ProtocolLib:5.3.0")
     compileOnly("me.clip:placeholderapi:2.11.6")
 }
 

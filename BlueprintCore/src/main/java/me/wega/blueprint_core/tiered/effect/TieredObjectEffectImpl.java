@@ -20,6 +20,7 @@ public enum TieredObjectEffectImpl {
     DAMAGE(DamageEffect.class),
     DIRECTION(DirectionEffect.class),
     IN_RANGE(InRangeEffect.class),
+    LAUNCH_PROJECTILE(LaunchProjectileEffect.class),
     LISTENER(ListenerEffect.class),
     LOC_OFFSET(LocOffsetEffect.class),
     LOOK_LOC(LookLocEffect.class),

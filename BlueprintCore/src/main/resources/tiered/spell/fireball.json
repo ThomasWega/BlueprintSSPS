@@ -1,0 +1,70 @@
+{
+  "id": "fireball",
+  "overwrite": true,
+  "impl": "SPELL",
+  "tiers": [
+    {
+      "item": {
+        "material": "FIRE_CHARGE",
+        "display": "<#D6AD06>Fireball",
+        "lore": [
+          "● Shoots 1 fireball"
+        ]
+      },
+      "effects": [
+        {
+          "LAUNCH_PROJECTILE": {
+            "propagate": true,
+            "projectile": "FIREBALL",
+            "viewers": "ALL",
+            "ticks": [0, 40],
+            "velocity": 2
+          }
+        },
+        {
+          "SOUND": {
+            "ignore-unapply": true,
+            "sound": "entity.blaze.shoot",
+            "viewers": "ALL",
+            "volume": 0.5,
+            "pitch": 1.0
+          }
+        },
+        {
+          "LISTENER": {
+            "propagate": true,
+            "target": "TARGET",
+            "ticks": [0, 60],
+            "event": "PROJECTILE_HIT",
+            "effects": [
+              {
+                "DAMAGE": {
+                  "target": "TARGET",
+                  "damage": "10",
+                  "cause": "SPELL"
+                }
+              },
+              {
+                "SOUND": {
+                  "ignore-unapply": true,
+                  "target": "TARGET",
+                  "viewers": "ALL",
+                  "sound": "entity.blaze.shoot",
+                  "volume": 0.5,
+                  "pitch": 2
+                }
+              },
+              {
+                "MSG": {
+                  "type": "ACTION_BAR",
+                  "target": "TARGET",
+                  "msg": "<color:#D6AD06>Fireball</color> <color:#FF0000>hit you!</color>"
+                }
+              }
+            ]
+          }
+        }
+      ]
+    }
+  ]
+}

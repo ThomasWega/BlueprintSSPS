@@ -1,0 +1,111 @@
+{
+  "id": "flourish",
+  "overwrite": true,
+  "impl": "SPELL",
+  "tiers": [
+    {
+      "item": {
+        "material": "SHIELD",
+        "display": "<#00ff40>Flourish",
+        "lore": [
+          "● Spawns a shield that deflects attacks attacks"
+        ]
+      },
+      "effects": [
+        {
+          "SET_PLACEHOLDER": [
+            {
+              "ignore-unapply": true,
+              "propagate": true,
+              "key": "%flourish_shield_rotation%",
+              "value": "0"
+            }
+          ]
+        },
+        {
+          "LISTENER": {
+            "listen-limit": "%flourish_hit_listens%",
+            "propagate": true,
+            "ticks": [0, 1200],
+            "event": "ATTACK_PLAYER",
+            "effects": [
+              {
+                "CANCEL_EVENT": {}
+              },
+              {
+                "SOUND": {
+                  "ignore-unapply": true,
+                  "viewers": ["INVOKER", "TARGET"],
+                  "sound": "item.shield.block",
+                  "volume": 0.5,
+                  "pitch": 0.6
+                }
+              },
+              {
+                "UNAPPLY_EFFECTS": {
+                  "propagate": true,
+                  "ticks": [0, 200]
+                }
+              },
+              {
+                "MSG": {
+                  "ticks": [0, 200],
+                  "target": "INVOKER",
+                  "type": "CHAT",
+                  "msg": "<color:#B41324>Flourish shield has ran out!</color>"
+                }
+              }
+            ]
+          }
+        },
+        {
+          "MSG": {
+            "target": "INVOKER",
+            "type": "CHAT",
+            "msg": "<color:#B41324>You have activated flourish!</color>"
+          }
+        },
+        {
+          "SOUND": {
+            "target": "INVOKER",
+            "ignore-unapply": true,
+            "viewers": "ALL",
+            "sound": "block.beehive.enter",
+            "volume": 1.3,
+            "pitch": 0.1
+          }
+        },
+        {
+          "SET_PLACEHOLDER": {
+            "ticks": 4,
+            "repeat": 500,
+            "ignore-unapply": true,
+            "propagate": true,
+            "key": "%flourish_shield_rotation%",
+            "value": "%flourish_shield_rotation%+8"
+          }
+        },
+        {
+          "PARTICLE_CIRCLE": {
+            "repeat": 500,
+            "ticks": 5,
+            "propagate": true,
+            "target": "INVOKER",
+            "viewers": "ALL",
+            "radius": 1,
+            "rotation-x": 90,
+            "rotation-y": "%flourish_shield_rotation%",
+            "particles": "4",
+            "particle-data": {
+              "particle": "DUST",
+              "red": 0,
+              "green": 50,
+              "blue": 154,
+              "y": 1
+            }
+          }
+        }
+      ]
+    }
+  ]
+}

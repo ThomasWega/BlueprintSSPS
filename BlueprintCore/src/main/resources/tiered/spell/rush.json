@@ -8,8 +8,7 @@
         "material": "FEATHER",
         "display": "<#E8E6E6>Rush",
         "lore": [
-          "● Dash forward and slash 3 times",
-          "● 2x SPEED multiplier (10s)"
+          "● Dash forward and slash 3 times"
         ]
       },
       "effects": [
