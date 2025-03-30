@@ -24,7 +24,7 @@
         },
         {
           "LISTENER": {
-            "listen-limit": "%flourish_hit_listens%",
+            "listen-limit": "999",
             "propagate": true,
             "ticks": [0, 1200],
             "event": "ATTACK_PLAYER",
